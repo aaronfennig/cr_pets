@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Pets MySQL</title>
+</head>
+<body>
+    <div class = "wrapper">
+        <h1>All the Pets!</h1>
+        <table id = "pet_table">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Type</th>
+            </tr>
+            {% for each in pets %}
+            <tr>
+                <td>{{each["pet_id"]}}</td>
+                <td>{{each["name"]}}</td>
+                <td>{{each["type"]}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <br>
+        <h1>Add a Pet!</h1>
+        <form action="/post" method = "POST">
+            <label for="name">Name</label>
+            <input type="text" name = "name">
+            <br><br>
+            <label for="type" name = "type">Type</label>
+            <input type="text" name = "type">
+            <br><br>
+            <input type="submit" value = "Submit">
+        </form>
+    </div>
+</body>
+</html>
